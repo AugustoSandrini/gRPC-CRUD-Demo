@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option csharp_namespace = "AccountService";
+
+package greet;
+
+
+service Greeter {
+  rpc SignUp (AccountRequest) returns (AccountResponse);
+}
+
+message AccountRequest {
+	string FirstName = 1;
+	string LastName  = 2;
+	string Email     = 3;
+	string Phone     = 4; 
+}
+
+message AccountResponse {
+	string AccountId = 1;
+	string Name      = 2;
+	string Email     = 3;
+	string Phone     = 4;
+}
