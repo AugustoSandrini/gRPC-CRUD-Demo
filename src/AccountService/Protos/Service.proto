@@ -4,21 +4,36 @@ option csharp_namespace = "AccountService";
 
 package greet;
 
-
-service Greeter {
-  rpc SignUp (AccountRequest) returns (AccountResponse);
+//Service
+service UserService {
+  rpc SignUp (SignInRequest) returns (UserResponse);
 }
 
-message AccountRequest {
+//Request
+message SignInRequest{
+ string Email		= 1;
+ string Password	= 2;
+}
+
+message SignUpRequest {
 	string FirstName = 1;
 	string LastName  = 2;
 	string Email     = 3;
-	string Phone     = 4; 
+	string Password  = 4;
+	string Phone     = 5; 
 }
 
-message AccountResponse {
+//Response
+message RegistrationResponse{
+	 int32 statusCode = 1;
+	 bool success	  = 2;
+	 string token	  = 3;
+}
+
+message UserResponse{
 	string AccountId = 1;
-	string Name      = 2;
-	string Email     = 3;
-	string Phone     = 4;
+}
+
+message UsersResponse{
+	repeated UserResponse  userList = 1;
 }
